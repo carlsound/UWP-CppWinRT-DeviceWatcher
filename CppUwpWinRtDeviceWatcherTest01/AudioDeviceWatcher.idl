@@ -1,0 +1,14 @@
+//import "oaidl.idl";
+//import "ocidl.idl";
+
+namespace CppUwpWinRtDeviceWatcherTest01
+{
+	enum AudioDeviceType { Input, Output };
+
+	runtimeclass AudioDeviceWatcher
+	{
+		AudioDeviceWatcher(AudioDeviceType ioType);
+		
+		Windows.Devices.Enumeration.DeviceInformation AudioDevice{ get; };
+	}
+}

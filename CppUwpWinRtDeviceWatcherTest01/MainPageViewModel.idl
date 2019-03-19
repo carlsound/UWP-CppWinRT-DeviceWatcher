@@ -1,0 +1,14 @@
+//import "oaidl.idl";
+//import "ocidl.idl";
+import "AudioDeviceWatcher.idl";
+
+namespace CppUwpWinRtDeviceWatcherTest01
+{
+	runtimeclass MainPageViewModel
+	{
+		MainPageViewModel();
+		
+		Windows.Devices.Enumeration.DeviceInformation AudioInputDevice{ get; };
+		Windows.Foundation.Collections.IObservableVector<IInspectable> AudioInputDevices{ get; };
+	}
+}

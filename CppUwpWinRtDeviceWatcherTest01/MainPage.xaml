@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="CppUwpWinRtDeviceWatcherTest01.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CppUwpWinRtDeviceWatcherTest01"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" 
+    RequestedTheme="Dark">
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!--<Button x:Name="myButton" Click="ClickHandler">Click Me</Button>-->
+
+        <ListBox x:Name="audioInputDevicesDynamicListBox" Height="200" Width="200" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Padding="5,5,5,5"/>
+        <ListBox x:Name="audioOutputDevicesDynamicListBox" Height="200" Width="200" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Padding="5,5,5,5"/>
+
+        <ListBox x:Name="midiInputDevicesDynamicListBox" Height="200" Width="200" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Padding="5,5,5,5"/>
+        <ListBox x:Name="midiOutputDevicesDynamicListBox" Height="200" Width="200" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Padding="5,5,5,5"/>
+
+        <ListBox x:Name="bluetoothLeDevicesDynamicListBox" Height="200" Width="200" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Padding="5,5,5,5"/>
+
+    </StackPanel>
+</Page>
