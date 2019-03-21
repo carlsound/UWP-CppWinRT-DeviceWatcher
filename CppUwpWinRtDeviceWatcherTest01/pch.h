@@ -5,6 +5,8 @@
 #include <hstring.h>
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.ApplicationModel.Activation.h>
+#include <winrt/Windows.Devices.Enumeration.h>
+#include <winrt/Windows.Media.Devices.h>
 #include <winrt/Windows.UI.Xaml.h>
 #include <winrt/Windows.UI.Xaml.Controls.h>
 #include <winrt/Windows.UI.Xaml.Controls.Primitives.h>

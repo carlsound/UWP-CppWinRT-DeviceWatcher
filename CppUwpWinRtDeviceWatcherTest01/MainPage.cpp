@@ -21,8 +21,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
         throw hresult_not_implemented();
     }
 
-    void MainPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
+    /*void MainPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
         myButton().Content(box_value(L"Clicked"));
-    }
+    }*/
 }

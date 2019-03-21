@@ -8,7 +8,10 @@ namespace CppUwpWinRtDeviceWatcherTest01
 	runtimeclass AudioDeviceWatcher
 	{
 		AudioDeviceWatcher(AudioDeviceType ioType);
+		void StartWatching();
+		void StopWatching();
 		
-		Windows.Devices.Enumeration.DeviceInformation AudioDevice{ get; };
+		Windows.Devices.Enumeration.DeviceInformationCollection AudioDevicesCollection{ get; };
+		Windows.Devices.Enumeration.DeviceInformation SelectedAudioDevice;
 	}
 }

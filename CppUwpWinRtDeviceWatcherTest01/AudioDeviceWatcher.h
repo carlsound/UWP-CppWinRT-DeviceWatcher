@@ -6,10 +6,19 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
     struct AudioDeviceWatcher : AudioDeviceWatcherT<AudioDeviceWatcher>
     {
-        AudioDeviceWatcher() = delete;
+        //AudioDeviceWatcher() = delete;
         AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType);
+		~AudioDeviceWatcher();
 
-        Windows::Devices::Enumeration::DeviceInformation AudioDevice();
+        void StartWatching();
+        void StopWatching();
+        Windows::Devices::Enumeration::DeviceInformationCollection AudioDevicesCollection();
+        Windows::Devices::Enumeration::DeviceInformation SelectedAudioDevice();
+        void SelectedAudioDevice(Windows::Devices::Enumeration::DeviceInformation const& value);
+
+    private:
+		//Windows::Devices::Enumeration::DeviceInformation m_deviceInformation;
+		Windows::Devices::Enumeration::DeviceWatcher *m_deviceWatcher;
     };
 }
 

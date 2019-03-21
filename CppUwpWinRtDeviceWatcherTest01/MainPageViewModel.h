@@ -8,8 +8,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
     {
         MainPageViewModel() = default;
 
-        Windows::Devices::Enumeration::DeviceInformation AudioInputDevice();
-        Windows::Foundation::Collections::IObservableVector<Windows::Foundation::IInspectable> AudioInputDevices();
+        CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher AudioInputs();
+        void AudioInputs(CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher const& value);
     };
 }
 

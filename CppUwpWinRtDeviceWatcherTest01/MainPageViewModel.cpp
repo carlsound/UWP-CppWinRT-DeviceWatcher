@@ -3,12 +3,12 @@
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-    Windows::Devices::Enumeration::DeviceInformation MainPageViewModel::AudioInputDevice()
+    CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher MainPageViewModel::AudioInputs()
     {
         throw hresult_not_implemented();
     }
 
-    Windows::Foundation::Collections::IObservableVector<Windows::Foundation::IInspectable> MainPageViewModel::AudioInputDevices()
+    void MainPageViewModel::AudioInputs(CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher const& value)
     {
         throw hresult_not_implemented();
     }
