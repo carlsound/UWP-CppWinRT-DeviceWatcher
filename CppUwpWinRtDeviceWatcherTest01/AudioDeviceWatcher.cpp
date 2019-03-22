@@ -17,21 +17,57 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 			//Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(Windows::Media::Devices::MediaDevice::GetAudioRenderSelector());
 		}
 
-		*m_deviceWatcher->Added += Windows::Devices::Enumeration::DeviceWatcher::Added;
-		*m_deviceWatcher->Removed += Windows::Devices::Enumeration::DeviceWatcher::Removed;
-		*m_deviceWatcher->Updated += Windows::Devices::Enumeration::DeviceWatcher::Updated;
-		*m_deviceWatcher->EnumerationCompleted += Windows::Devices::Enumeration::DeviceWatcher::EnumerationCompleted;
-
         //throw hresult_not_implemented();
     }
 
-	AudioDeviceWatcher::~AudioDeviceWatcher()
+	/*AudioDeviceWatcher::~AudioDeviceWatcher()
     {
-		*m_deviceWatcher->Added -= Windows::Devices::Enumeration::DeviceWatcher::Added;
-		*m_deviceWatcher->Removed -= Windows::Devices::Enumeration::DeviceWatcher::Removed;
-		*m_deviceWatcher->Updated -= Windows::Devices::Enumeration::DeviceWatcher::Updated;
-		*m_deviceWatcher->EnumerationCompleted -= Windows::Devices::Enumeration::DeviceWatcher::EnumerationCompleted;
 		*m_deviceWatcher = nullptr;
+    }*/
+
+	event_token AudioDeviceWatcher::Added(Windows::Foundation::TypedEventHandler<Windows::Devices::Enumeration::DeviceWatcher, Windows::Devices::Enumeration::DeviceInformation> const& handler)
+    {
+		return m_deviceAdded.add(handler);
+    }
+	
+	void AudioDeviceWatcher::Added(event_token const& cookie)
+	{
+		m_deviceAdded.remove(cookie);
+	}
+
+	event_token AudioDeviceWatcher::Removed(Windows::Foundation::TypedEventHandler<Windows::Devices::Enumeration::DeviceWatcher, Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler)
+	{
+		return m_deviceRemoved.add(handler);
+	}
+	
+	void AudioDeviceWatcher::Removed(event_token const& cookie)
+	{
+		m_deviceRemoved.remove(cookie);
+	}
+
+	event_token AudioDeviceWatcher::Updated(Windows::Foundation::TypedEventHandler<Windows::Devices::Enumeration::DeviceWatcher, Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler)
+	{
+		return m_deviceUpdated.add(handler);
+	}
+	
+	void AudioDeviceWatcher::Updated(event_token const& cookie)
+	{
+		m_deviceUpdated.remove(cookie);
+	}
+
+	async void deviceWatcherAdded(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformation result)
+    {
+	    
+    }
+
+	async void deviceWatcherRemoved(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result)
+    {
+	    
+    }
+
+	async void deviceWatcherUpdated(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result)
+    {
+	    
     }
 
     void AudioDeviceWatcher::StartWatching()
