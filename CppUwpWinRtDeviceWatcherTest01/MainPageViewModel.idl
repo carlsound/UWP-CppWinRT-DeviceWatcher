@@ -6,9 +6,9 @@ namespace CppUwpWinRtDeviceWatcherTest01
 {
 	runtimeclass MainPageViewModel
 	{
-		MainPageViewModel();
+		MainPageViewModel(Windows.UI.Core.CoreDispatcher dispatcher);
 
-		AudioDeviceWatcher AudioInputs;
+		AudioDeviceWatcher AudioInputs{ get; };
 		
 		//Windows.Devices.Enumeration.DeviceInformation AudioInputDevice{ get; };
 		//Windows.Foundation.Collections.IObservableVector<IInspectable> AudioInputDevices{ get; };

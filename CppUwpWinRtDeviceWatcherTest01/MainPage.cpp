@@ -40,11 +40,14 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	CppUwpWinRtDeviceWatcherTest01::MainPageViewModel MainPage::ViewModel()
 	{
-		throw hresult_not_implemented();
+		return m_viewModel;
+		//throw hresult_not_implemented();
 	}
 
+	/*
 	void MainPage::ViewModel(CppUwpWinRtDeviceWatcherTest01::MainPageViewModel const& value)
 	{
 		throw hresult_not_implemented();
 	}
+	*/
 }

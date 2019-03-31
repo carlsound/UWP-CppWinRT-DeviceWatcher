@@ -8,6 +8,6 @@ namespace CppUwpWinRtDeviceWatcherTest01
         MainPage();
         
 		//Int32 MyProperty;
-		MainPageViewModel ViewModel;
+		MainPageViewModel ViewModel{ get; };
     }
 }

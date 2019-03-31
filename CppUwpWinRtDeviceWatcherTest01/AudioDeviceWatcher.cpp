@@ -4,8 +4,10 @@
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
     AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const dispatcher): 
-		m_coreDispatcher {dispatcher}, m_deviceType {ioType}, 
-		m_deviceWatcher { nullptr }
+		m_deviceWatcher{ nullptr },
+		m_deviceType{ ioType }, 
+		m_coreDispatcher {dispatcher},
+		m_deviceInformationList{ winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>() }
     {
 		switch (ioType)
 		{
@@ -46,10 +48,16 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
         //throw hresult_not_implemented();
     }
 
+	///////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 	AudioDeviceWatcher::~AudioDeviceWatcher()
     {
 	    
     }
+	*/
+
+	///////////////////////////////////////////////////////////////////////////////////////////
 
     void AudioDeviceWatcher::StartWatching()
     {
@@ -63,44 +71,43 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
         //throw hresult_not_implemented();
     }
 
-    Windows::Foundation::Collections::IObservableVector<Windows::Foundation::IInspectable> AudioDeviceWatcher::DeviceInformationList()
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> AudioDeviceWatcher::DeviceInformationList()
     {
-        throw hresult_not_implemented();
+		return m_deviceInformationList;
+        //throw hresult_not_implemented();
     }
 
-    Windows::Devices::Enumeration::DeviceInformation AudioDeviceWatcher::SelectedAudioDevice()
-    {
-        throw hresult_not_implemented();
-    }
+	////////////////////////////////////////////////////////////////////////////////////////////
 
-    void AudioDeviceWatcher::SelectedAudioDevice(Windows::Devices::Enumeration::DeviceInformation const& value)
-    {
-        throw hresult_not_implemented();
-    }
-
-	Windows::Foundation::IAsyncAction AudioDeviceWatcher::UpdateDevices()
+	/* Windows::Foundation::IAsyncAction */ void AudioDeviceWatcher::UpdateDevices()
     {
 		Windows::Devices::Enumeration::DeviceInformationCollection m_deviceInformationCollection = Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(m_deviceSelectorString).get();
 
-		this->DeviceInformationList().Clear;
+		m_deviceInformationList.Clear();
+		//this->DeviceInformationList().Clear;
 
 		for (Windows::Devices::Enumeration::DeviceInformation deviceInformation : m_deviceInformationCollection)
 		{
-			this->DeviceInformationList().Append(deviceInformation);
+			m_deviceInformationList.Append(deviceInformation);
+			//this->DeviceInformationList().Append(deviceInformation);
 		}
     }
 
-	Windows::Foundation::IAsyncAction AudioDeviceWatcher::DeviceWatcherAdded(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformation result)
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	/* Windows::Foundation::IAsyncAction */ void AudioDeviceWatcher::DeviceWatcherAdded(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformation result)
     {
 	    m_coreDispatcher.RunAsync(Windows::UI::Core::CoreDispatcherPriority::High, [this](){ UpdateDevices(); });
     }
 
-	Windows::Foundation::IAsyncAction AudioDeviceWatcher::DeviceWatcherRemoved(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result)
+	/* Windows::Foundation::IAsyncAction */ void AudioDeviceWatcher::DeviceWatcherRemoved(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result)
     {
 		m_coreDispatcher.RunAsync(Windows::UI::Core::CoreDispatcherPriority::High, [this]() { UpdateDevices(); });
     }
 
-	Windows::Foundation::IAsyncAction AudioDeviceWatcher::DeviceWatcherUpdated(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result)
+	/* Windows::Foundation::IAsyncAction */ void AudioDeviceWatcher::DeviceWatcherUpdated(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result)
     {
 		m_coreDispatcher.RunAsync(Windows::UI::Core::CoreDispatcherPriority::High, [this]() { UpdateDevices(); });
     }
