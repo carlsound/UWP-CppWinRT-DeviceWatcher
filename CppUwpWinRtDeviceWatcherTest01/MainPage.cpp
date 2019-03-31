@@ -6,9 +6,14 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-    MainPage::MainPage()
+	MainPage::MainPage() : m_coreDispatcher{ Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() }, m_viewModel{ m_coreDispatcher }
     {
         InitializeComponent();
+    }
+
+	MainPage::~MainPage()
+    {
+	    
     }
 
     int32_t MainPage::MyProperty()

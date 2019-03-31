@@ -8,6 +8,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
     {
         //AudioDeviceWatcher() = delete;
         AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const& dispatcher);
+		~AudioDeviceWatcher();
 
         void StartWatching();
         void StopWatching();

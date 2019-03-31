@@ -3,11 +3,8 @@
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-    AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const& dispatcher)
+    AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const& dispatcher): m_coreDispatcher {dispatcher}, m_deviceType {ioType}, m_deviceWatcher {Windows::Devices::Enumeration::DeviceWatcher::CreateWatcher()}
     {
-		m_coreDispatcher = dispatcher;
-		m_deviceType = ioType;
-
 		switch (ioType)
 		{
 			case AudioDeviceType::Input:
@@ -45,6 +42,11 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 			});
 
         //throw hresult_not_implemented();
+    }
+
+	AudioDeviceWatcher::~AudioDeviceWatcher()
+    {
+	    
     }
 
     void AudioDeviceWatcher::StartWatching()
