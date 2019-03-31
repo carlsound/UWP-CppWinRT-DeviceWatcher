@@ -16,11 +16,13 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> DeviceInformationList();
 
     private:
-		/* Windows::Foundation::IAsyncAction */ void UpdateDevices();
+		Windows::Foundation::IAsyncOperation<Windows::Devices::Enumeration::DeviceInformationCollection> FindDevicesAsync();
+		
+    	/* Windows::Foundation::IAsyncAction */ void UpdateDevicesAsync();
 
-		/* Windows::Foundation::IAsyncAction */ void DeviceWatcherAdded(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformation result);
-		/* Windows::Foundation::IAsyncAction */ void DeviceWatcherRemoved(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result);
-		/* Windows::Foundation::IAsyncAction */ void DeviceWatcherUpdated(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result);
+		Windows::Foundation::IAsyncAction DeviceWatcherAddedAsync(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformation result);
+		Windows::Foundation::IAsyncAction DeviceWatcherRemovedAsync(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result);
+		Windows::Foundation::IAsyncAction DeviceWatcherUpdatedAsync(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result);
 
 		Windows::Devices::Enumeration::DeviceWatcher::Added_revoker m_deviceWatcherAddedRevoker;
 		Windows::Devices::Enumeration::DeviceWatcher::Removed_revoker m_deviceWatcherRemovedRevoker;
@@ -30,7 +32,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		//Windows::Foundation::EventHandler<Windows::Devices::Enumeration::DeviceInformationUpdate> deviceWatcherRemovedHandler;
 		//Windows::Foundation::EventHandler<Windows::Devices::Enumeration::DeviceInformationUpdate> deviceWatcherUpdatedHandler;
 
-		//Windows::Devices::Enumeration::DeviceInformationCollection m_deviceInformationCollection;
+		Windows::Devices::Enumeration::DeviceInformationCollection m_deviceInformationCollection;
 
 		Windows::Devices::Enumeration::DeviceWatcher m_deviceWatcher;
 		hstring m_deviceSelectorString;
