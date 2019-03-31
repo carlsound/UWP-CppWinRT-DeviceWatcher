@@ -8,7 +8,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
     struct MainPageViewModel : MainPageViewModelT<MainPageViewModel>
     {
         MainPageViewModel(Windows::UI::Core::CoreDispatcher const dispatcher);
-		~MainPageViewModel();
+		//~MainPageViewModel();
 
         CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher AudioInputs();
         void AudioInputs(CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher const& value);

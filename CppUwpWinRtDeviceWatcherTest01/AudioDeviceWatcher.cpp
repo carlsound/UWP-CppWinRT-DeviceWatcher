@@ -3,7 +3,9 @@
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-    AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const& dispatcher): m_coreDispatcher {dispatcher}, m_deviceType {ioType}, m_deviceWatcher {Windows::Devices::Enumeration::DeviceWatcher::CreateWatcher()}
+    AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const dispatcher): 
+		m_coreDispatcher {dispatcher}, m_deviceType {ioType}, 
+		m_deviceWatcher { nullptr }
     {
 		switch (ioType)
 		{

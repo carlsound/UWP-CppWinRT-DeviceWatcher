@@ -12,10 +12,13 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
     struct MainPage : MainPageT<MainPage>
     {
         MainPage();
-		~MainPage();
+		//~MainPage();
 
-        int32_t MyProperty();
-        void MyProperty(int32_t value);
+        //int32_t MyProperty();
+        //void MyProperty(int32_t value);
+
+		CppUwpWinRtDeviceWatcherTest01::MainPageViewModel ViewModel();
+		void ViewModel(CppUwpWinRtDeviceWatcherTest01::MainPageViewModel const& value);
 
         void ClickHandler(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
 
