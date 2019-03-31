@@ -8,7 +8,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
 	MainPage::MainPage() : 
 		m_coreDispatcher{ Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() }, 
-		m_viewModel{ m_coreDispatcher }
+		m_viewModel{ Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() }
     {
         InitializeComponent();
     }

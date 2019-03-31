@@ -7,15 +7,14 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		m_coreDispatcher{ dispatcher }, 
 		m_audioInputsDeviceWatcher{ CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, m_coreDispatcher }
 	{
-		
+		m_audioInputsDeviceWatcher.StartWatching();
 	}
 
-	/*
+
 	MainPageViewModel::~MainPageViewModel()
 	{
-		
+		m_audioInputsDeviceWatcher.StopWatching();
 	}
-	*/
 
     CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher MainPageViewModel::AudioInputs()
     {
