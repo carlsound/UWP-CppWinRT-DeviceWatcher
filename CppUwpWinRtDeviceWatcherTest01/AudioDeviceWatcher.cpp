@@ -87,9 +87,11 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 	    return Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(m_deviceSelectorString);
     }
 
+	///////////////////////////////////////////////////////////////////////////////////////////
+
 	void AudioDeviceWatcher::UpdateDevicesAsync()
     {
-		m_deviceInformationCollection = this->FindDevicesAsync().GetResults();
+		m_deviceInformationCollection = FindDevicesAsync().GetResults();
 
 		m_deviceInformationList.Clear();
 		//this->DeviceInformationList().Clear;

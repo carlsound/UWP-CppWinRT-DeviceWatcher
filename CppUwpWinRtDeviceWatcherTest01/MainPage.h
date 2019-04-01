@@ -14,6 +14,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
         MainPage();
 		//~MainPage();
 
+		void OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs e);
+
         //int32_t MyProperty();
         //void MyProperty(int32_t value);
 

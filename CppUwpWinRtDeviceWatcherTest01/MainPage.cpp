@@ -6,11 +6,12 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-	MainPage::MainPage() : 
-		m_coreDispatcher{ Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() }, 
-		m_viewModel{ Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() }
+	MainPage::MainPage() : m_coreDispatcher{ nullptr }, m_viewModel{ nullptr }
     {
         InitializeComponent();
+
+		//m_coreDispatcher{ Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() };
+		//m_viewModel{ m_coreDispatcher };
     }
 
 	/*
@@ -19,6 +20,11 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 	    
     }
 	*/
+
+	void MainPage::OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs e)
+	{
+		
+	}
 
 	/*
     int32_t MainPage::MyProperty()
