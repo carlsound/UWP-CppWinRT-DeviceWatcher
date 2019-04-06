@@ -25,8 +25,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
         void ClickHandler(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
 
     private:
-		Windows::UI::Core::CoreDispatcher m_coreDispatcher;
-		MainPageViewModel m_viewModel;
+		std::shared_ptr<Windows::UI::Core::CoreDispatcher> m_coreDispatcher;
+		std::shared_ptr<MainPageViewModel> m_viewModel;
     };
 }
 

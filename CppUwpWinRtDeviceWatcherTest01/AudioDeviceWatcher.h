@@ -32,13 +32,13 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		//Windows::Foundation::EventHandler<Windows::Devices::Enumeration::DeviceInformationUpdate> deviceWatcherRemovedHandler;
 		//Windows::Foundation::EventHandler<Windows::Devices::Enumeration::DeviceInformationUpdate> deviceWatcherUpdatedHandler;
 
-		Windows::Devices::Enumeration::DeviceInformationCollection m_deviceInformationCollection;
+		std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection> m_deviceInformationCollection;
 
-		Windows::Devices::Enumeration::DeviceWatcher m_deviceWatcher;
-		hstring m_deviceSelectorString;
-		Windows::UI::Core::CoreDispatcher m_coreDispatcher;
+		std::shared_ptr<Windows::Devices::Enumeration::DeviceWatcher> m_deviceWatcher;
+		std::shared_ptr<hstring> m_deviceSelectorString;
+		std::shared_ptr<Windows::UI::Core::CoreDispatcher> m_coreDispatcher;
 		AudioDeviceType m_deviceType;
-		Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> m_deviceInformationList;
+		std::shared_ptr<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>> m_deviceInformationList;
     };
 }
 

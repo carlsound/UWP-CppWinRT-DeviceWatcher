@@ -6,12 +6,12 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-	MainPage::MainPage() : m_coreDispatcher{ nullptr }, m_viewModel{ nullptr }
+	MainPage::MainPage() //: m_coreDispatcher{ nullptr }, m_viewModel{ nullptr }
     {
         InitializeComponent();
 
-		//m_coreDispatcher{ Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() };
-		//m_viewModel{ m_coreDispatcher };
+		m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>( Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() );
+		m_viewModel = std::make_shared<MainPageViewModel>( *m_coreDispatcher );
     }
 
 	/*
@@ -46,7 +46,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	CppUwpWinRtDeviceWatcherTest01::MainPageViewModel MainPage::ViewModel()
 	{
-		return m_viewModel;
+		return *m_viewModel;
 		//throw hresult_not_implemented();
 	}
 

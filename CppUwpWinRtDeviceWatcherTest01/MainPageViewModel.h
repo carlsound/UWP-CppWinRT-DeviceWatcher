@@ -14,8 +14,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
         //void AudioInputs(CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher const& value);
 
     private:
-        Windows::UI::Core::CoreDispatcher m_coreDispatcher;
-		AudioDeviceWatcher m_audioInputsDeviceWatcher;
+        std::shared_ptr<Windows::UI::Core::CoreDispatcher> m_coreDispatcher;
+		std::shared_ptr<AudioDeviceWatcher> m_audioInputsDeviceWatcher;
     };
 }
 
