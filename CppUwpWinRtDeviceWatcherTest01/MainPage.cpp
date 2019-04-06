@@ -23,7 +23,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	void MainPage::OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs e)
 	{
-		
+		m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>(Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher());
+		m_viewModel = std::make_shared<MainPageViewModel>(*m_coreDispatcher);
 	}
 
 	/*
