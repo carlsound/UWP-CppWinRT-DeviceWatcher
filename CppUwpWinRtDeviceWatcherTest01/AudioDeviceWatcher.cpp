@@ -17,6 +17,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 
+	/*
 	AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType):
 		//m_deviceWatcher{ nullptr },
 		m_deviceType{ ioType } //,
@@ -26,6 +27,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 	{
 		initializeWatcher(m_deviceType);
 	}
+	*/
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,13 +71,15 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		{
 			case AudioDeviceType::Input:
 			{
-				m_deviceSelectorString = Windows::Media::Devices::MediaDevice::GetAudioCaptureSelector();
+				//m_deviceSelectorString = Windows::Media::Devices::MediaDevice::GetAudioCaptureSelector();
+				this->SelectorString(Windows::Media::Devices::MediaDevice::GetAudioCaptureSelector());
 				break;
 			}
 
 			case AudioDeviceType::Output:
 			{
-				m_deviceSelectorString = Windows::Media::Devices::MediaDevice::GetAudioRenderSelector();
+				//m_deviceSelectorString = Windows::Media::Devices::MediaDevice::GetAudioRenderSelector();
+				this->SelectorString(Windows::Media::Devices::MediaDevice::GetAudioRenderSelector());
 				break;
 			}
 			default:
@@ -84,7 +88,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 			}
 		}
 
-		m_deviceWatcher = Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(m_deviceSelectorString);
+		//m_deviceWatcher = Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(m_deviceSelectorString);
+		this->Watcher( Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(this->SelectorString) );
 
 		m_deviceWatcherAddedRevoker = m_deviceWatcher.Added(winrt::auto_revoke, [this](Windows::Devices::Enumeration::DeviceWatcher const& sender, Windows::Devices::Enumeration::DeviceInformation const& args)
 			{
@@ -125,26 +130,79 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		}
 		*/
 
-		initializeWatcher(m_deviceType);
+		//initializeWatcher(m_deviceType);
+		initializeWatcher(this->IoType());
 
-		m_deviceWatcher.Start();
+		//m_deviceWatcher.Start();
+		this->Watcher(StartWatching());
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 
     void AudioDeviceWatcher::StopWatching()
     {
-		m_deviceWatcher.Stop();
+		//m_deviceWatcher.Stop();
+		this->Watcher(StopWatching());
         //throw hresult_not_implemented();
     }
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
+	CppUwpWinRtDeviceWatcherTest01::AudioDeviceType AudioDeviceWatcher::IoType()
+	{
+		throw hresult_not_implemented();
+	}
+
+	void AudioDeviceWatcher::IoType(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& value)
+	{
+		throw hresult_not_implemented();
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	hstring AudioDeviceWatcher::SelectorString()
+	{
+		throw hresult_not_implemented();
+	}
+
+	void AudioDeviceWatcher::SelectorString(hstring const& value)
+	{
+		throw hresult_not_implemented();
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	Windows::Devices::Enumeration::DeviceWatcher AudioDeviceWatcher::Watcher()
+	{
+		throw hresult_not_implemented();
+	}
+
+	void AudioDeviceWatcher::Watcher(Windows::Devices::Enumeration::DeviceWatcher const& value)
+	{
+		throw hresult_not_implemented();
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	Windows::Devices::Enumeration::DeviceInformationCollection AudioDeviceWatcher::Devices()
+	{
+		throw hresult_not_implemented();
+	}
+
+	void AudioDeviceWatcher::Devices(Windows::Devices::Enumeration::DeviceInformationCollection const& value)
+	{
+		throw hresult_not_implemented();
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 	Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> AudioDeviceWatcher::DeviceInformationList()
     {
 		return m_deviceInformationList;
         //throw hresult_not_implemented();
     }
+	*/
 
 	////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -185,4 +243,18 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
     {
 		return m_coreDispatcher.RunAsync(Windows::UI::Core::CoreDispatcherPriority::High, [this]() { UpdateDevicesAsync(); });
     }
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	winrt::event_token AudioDeviceWatcher::CollectionChanged(Windows::UI::Xaml::Interop::NotifyCollectionChangedEventHandler const& handler)
+	{
+		throw hresult_not_implemented();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	void AudioDeviceWatcher::CollectionChanged(winrt::event_token const& token) noexcept
+	{
+		throw hresult_not_implemented();
+	}
 }

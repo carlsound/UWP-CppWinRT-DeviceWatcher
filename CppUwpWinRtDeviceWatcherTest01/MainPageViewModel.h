@@ -20,7 +20,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
         Windows::UI::Core::CoreDispatcher m_coreDispatcher;
 		//std::shared_ptr<AudioDeviceWatcher> m_audioInputsDeviceWatcher;
 		//CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher m_audioInputsDeviceWatcher{ CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input }; //{ CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, nullptr };
-		CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher m_audioInputsDeviceWatcher{ winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>( CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input ) };
+		CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher m_audioInputsDeviceWatcher; //{ winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>( CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input ) };
+		//std::shared_ptr<CppUwpWinRtDeviceWatcherTest01::AudioDeviceWatcher> m_audioInputsDeviceWatcher;
     };
 }
 

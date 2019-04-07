@@ -10,16 +10,17 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		//m_audioInputsDeviceWatcher{ CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input }
 	{
 		//m_audioInputsDeviceWatcher = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>( CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, *m_coreDispatcher );
-		//m_audioInputsDeviceWatcher = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input);
+		auto m_audioInputsDeviceWatcher = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input);
 		
 		//m_audioInputsDeviceWatcher.StartWatching();
 		//m_audioInputsDeviceWatcher.StartWatching(dispatcher);
+		//m_audioInputsDeviceWatcher = std::make_shared<winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input) >();
 	}
 
 
 	MainPageViewModel::~MainPageViewModel()
 	{
-		m_audioInputsDeviceWatcher.StopWatching();
+		this->m_audioInputsDeviceWatcher.StopWatching();
 		m_audioInputsDeviceWatcher = nullptr;
 		m_audioInputsDeviceWatcher = nullptr;
 		m_coreDispatcher = nullptr;
