@@ -5,11 +5,15 @@ namespace CppUwpWinRtDeviceWatcherTest01
 {
 	enum AudioDeviceType { Input, Output };
 
-	runtimeclass AudioDeviceWatcher
-	{
-		AudioDeviceWatcher(AudioDeviceType ioType, Windows.UI.Core.CoreDispatcher dispatcher);
+runtimeclass AudioDeviceWatcher
+{
+		//AudioDeviceWatcher();
+		AudioDeviceWatcher(AudioDeviceType ioType);
+		//AudioDeviceWatcher(AudioDeviceType ioType, Windows.UI.Core.CoreDispatcher dispatcher);
+		//~AudioDeviceWatcher();
 
-		void StartWatching();
+		//void StartWatching();
+		void StartWatching(Windows.UI.Core.CoreDispatcher dispatcher);
 		void StopWatching();
 
 		Windows.Foundation.Collections.IObservableVector<Windows.Devices.Enumeration.DeviceInformation> DeviceInformationList{ get; };

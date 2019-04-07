@@ -6,16 +6,21 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
     struct AudioDeviceWatcher : AudioDeviceWatcherT<AudioDeviceWatcher>
     {
-        //AudioDeviceWatcher() = delete;
-        AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const dispatcher);
+		AudioDeviceWatcher() = delete;
+		AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType);
+        //AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const dispatcher);
 		//~AudioDeviceWatcher();
 
-        void StartWatching();
+        //void StartWatching();
+		void StartWatching(Windows::UI::Core::CoreDispatcher const& dispatcher);
+
         void StopWatching();
 
 		Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> DeviceInformationList();
 
     private:
+		void initializeWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType);
+
 		Windows::Foundation::IAsyncOperation<Windows::Devices::Enumeration::DeviceInformationCollection> FindDevicesAsync();
 		
     	/* Windows::Foundation::IAsyncAction */ void UpdateDevicesAsync();
@@ -32,13 +37,17 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		//Windows::Foundation::EventHandler<Windows::Devices::Enumeration::DeviceInformationUpdate> deviceWatcherRemovedHandler;
 		//Windows::Foundation::EventHandler<Windows::Devices::Enumeration::DeviceInformationUpdate> deviceWatcherUpdatedHandler;
 
-		std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection> m_deviceInformationCollection;
-
-		std::shared_ptr<Windows::Devices::Enumeration::DeviceWatcher> m_deviceWatcher;
-		std::shared_ptr<hstring> m_deviceSelectorString;
-		std::shared_ptr<Windows::UI::Core::CoreDispatcher> m_coreDispatcher;
-		AudioDeviceType m_deviceType;
-		std::shared_ptr<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>> m_deviceInformationList;
+		//std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection> m_deviceInformationCollection{ std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection>() };
+		Windows::Devices::Enumeration::DeviceInformationCollection m_deviceInformationCollection{ nullptr };
+		//std::shared_ptr<Windows::Devices::Enumeration::DeviceWatcher> m_deviceWatcher{ nullptr };
+		Windows::Devices::Enumeration::DeviceWatcher m_deviceWatcher{ nullptr };
+		//std::shared_ptr<Windows::UI::Core::CoreDispatcher> m_coreDispatcher{ nullptr };
+		Windows::UI::Core::CoreDispatcher m_coreDispatcher{ nullptr };
+		AudioDeviceType m_deviceType{ AudioDeviceType::Input };
+		//std::shared_ptr<hstring> m_deviceSelectorString{ std::make_shared<hstring>(Windows::Media::Devices::MediaDevice::GetAudioCaptureSelector()) };
+		hstring m_deviceSelectorString{ Windows::Media::Devices::MediaDevice::GetAudioCaptureSelector() };
+		//std::shared_ptr<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>> m_deviceInformationList{ std::make_shared<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>>(winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>()) };
+		Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> m_deviceInformationList{ winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>() };
     };
 }
 

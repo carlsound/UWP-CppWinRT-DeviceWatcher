@@ -8,6 +8,8 @@ namespace CppUwpWinRtDeviceWatcherTest01
 	{
 		MainPageViewModel(Windows.UI.Core.CoreDispatcher dispatcher);
 
+		void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e);
+
 		AudioDeviceWatcher AudioInputs{ get; };
 		
 		//Windows.Devices.Enumeration.DeviceInformation AudioInputDevice{ get; };

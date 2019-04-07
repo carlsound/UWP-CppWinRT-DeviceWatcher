@@ -10,8 +10,9 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
     {
         InitializeComponent();
 
-		m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>( Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() );
-		m_viewModel = std::make_shared<MainPageViewModel>( *m_coreDispatcher );
+		//m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>( Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() );
+		//m_viewModel = std::make_shared<MainPageViewModel>( *m_coreDispatcher );
+		//m_viewModel = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::MainPageViewModel>(*m_coreDispatcher );
     }
 
 	/*
@@ -23,8 +24,10 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	void MainPage::OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs e)
 	{
-		m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>(Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher());
-		m_viewModel = std::make_shared<MainPageViewModel>(*m_coreDispatcher);
+		//m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>(Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher());
+		//m_viewModel = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::MainPageViewModel>(*m_coreDispatcher);
+		m_viewModel = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::MainPageViewModel>(Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher());
+		m_viewModel.OnNavigatedTo(e);
 	}
 
 	/*
@@ -47,7 +50,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	CppUwpWinRtDeviceWatcherTest01::MainPageViewModel MainPage::ViewModel()
 	{
-		return *m_viewModel;
+		return m_viewModel;
 		//throw hresult_not_implemented();
 	}
 
