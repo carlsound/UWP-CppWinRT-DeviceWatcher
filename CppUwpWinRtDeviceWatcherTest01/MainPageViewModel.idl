@@ -4,6 +4,8 @@ import "AudioDeviceWatcher.idl";
 
 namespace CppUwpWinRtDeviceWatcherTest01
 {
+	//[bindable]
+	//[default_interface]
 	runtimeclass MainPageViewModel
 	{
 		MainPageViewModel(Windows.UI.Core.CoreDispatcher dispatcher);

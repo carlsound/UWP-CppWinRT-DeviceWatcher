@@ -26,7 +26,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 	{
 		//m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>(Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher());
 		//m_viewModel = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::MainPageViewModel>(*m_coreDispatcher);
-		m_viewModel = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::MainPageViewModel>(Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher());
+		//m_viewModel = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::MainPageViewModel>(Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher());
 		m_viewModel.OnNavigatedTo(e);
 	}
 

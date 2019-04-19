@@ -2,6 +2,7 @@ import "MainPageViewModel.idl";
 
 namespace CppUwpWinRtDeviceWatcherTest01
 {
+	//[bindable]
     [default_interface]
     runtimeclass MainPage : Windows.UI.Xaml.Controls.Page
     {

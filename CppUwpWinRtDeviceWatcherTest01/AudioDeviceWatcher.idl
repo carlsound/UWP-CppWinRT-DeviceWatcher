@@ -5,23 +5,25 @@ namespace CppUwpWinRtDeviceWatcherTest01
 {
 	enum AudioDeviceType { Input, Output };
 
-runtimeclass AudioDeviceWatcher: Windows.UI.Xaml.Interop.INotifyCollectionChanged
-{
+	//[bindable]
+	//[default_interface]
+	runtimeclass AudioDeviceWatcher //: Windows.UI.Xaml.Interop.INotifyCollectionChanged
+	{
 		//AudioDeviceWatcher();
 		//AudioDeviceWatcher(AudioDeviceType ioType);
-		//AudioDeviceWatcher(AudioDeviceType ioType, Windows.UI.Core.CoreDispatcher dispatcher);
+		AudioDeviceWatcher(AudioDeviceType ioType, Windows.UI.Core.CoreDispatcher dispatcher);
 		//~AudioDeviceWatcher();
 
-		//void StartWatching();
-		void StartWatching(Windows.UI.Core.CoreDispatcher dispatcher);
+		void StartWatching();
+		//void StartWatching(Windows.UI.Core.CoreDispatcher dispatcher);
 		void StopWatching();
 
-		AudioDeviceType IoType;
-		String SelectorString;
-		Windows.Devices.Enumeration.DeviceWatcher Watcher;
-		Windows.Devices.Enumeration.DeviceInformationCollection Devices;
+		//AudioDeviceType IoType;
+		//String SelectorString;
+		//Windows.Devices.Enumeration.DeviceWatcher Watcher;
+		//Windows.Devices.Enumeration.DeviceInformationCollection Devices;
 
-		//Windows.Foundation.Collections.IObservableVector<Windows.Devices.Enumeration.DeviceInformation> DeviceInformationList{ get; };
+		Windows.Foundation.Collections.IObservableVector<Windows.Devices.Enumeration.DeviceInformation> DeviceInformationList{ get; };
 		
 		//Windows.Devices.Enumeration.DeviceInformation SelectedAudioDevice;
 	}

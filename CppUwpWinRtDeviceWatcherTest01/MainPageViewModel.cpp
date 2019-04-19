@@ -4,13 +4,13 @@
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
 	MainPageViewModel::MainPageViewModel(Windows::UI::Core::CoreDispatcher dispatcher) :
-		m_coreDispatcher{ dispatcher } //,
-		//m_audioInputsDeviceWatcher{ std::make_shared<AudioDeviceWatcher>(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, *m_coreDispatcher) }
+		m_coreDispatcher{ dispatcher },
+		m_audioInputsDeviceWatcher{ winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, dispatcher) }
 		//m_audioInputsDeviceWatcher { CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, * m_coreDispatcher }
 		//m_audioInputsDeviceWatcher{ CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input }
 	{
-		//m_audioInputsDeviceWatcher = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>( CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, *m_coreDispatcher );
-		auto m_audioInputsDeviceWatcher = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input);
+		//m_audioInputsDeviceWatcher = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>( CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input, m_coreDispatcher );
+		//auto m_audioInputsDeviceWatcher = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::AudioDeviceWatcher>(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType::Input);
 		
 		//m_audioInputsDeviceWatcher.StartWatching();
 		//m_audioInputsDeviceWatcher.StartWatching(dispatcher);
@@ -28,7 +28,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	void MainPageViewModel::OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs const& e)
 	{
-		m_audioInputsDeviceWatcher.StartWatching(m_coreDispatcher);
+		m_audioInputsDeviceWatcher.StartWatching();
+		//m_audioInputsDeviceWatcher.StartWatching(m_coreDispatcher);
 
 		//throw hresult_not_implemented();
 	}
