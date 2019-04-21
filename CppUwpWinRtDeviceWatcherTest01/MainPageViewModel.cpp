@@ -28,7 +28,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	void MainPageViewModel::OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs const& e)
 	{
-		m_audioInputsDeviceWatcher.StartWatching();
+		//m_audioInputsDeviceWatcher.StartWatching();
 		//m_audioInputsDeviceWatcher.StartWatching(m_coreDispatcher);
 
 		//throw hresult_not_implemented();
