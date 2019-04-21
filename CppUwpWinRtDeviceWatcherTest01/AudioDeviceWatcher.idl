@@ -14,9 +14,9 @@ namespace CppUwpWinRtDeviceWatcherTest01
 		AudioDeviceWatcher(AudioDeviceType ioType, Windows.UI.Core.CoreDispatcher dispatcher);
 		//~AudioDeviceWatcher();
 
-		void StartWatching();
+		//void StartWatching();
 		//void StartWatching(Windows.UI.Core.CoreDispatcher dispatcher);
-		void StopWatching();
+		//void StopWatching();
 
 		//AudioDeviceType IoType;
 		//String SelectorString;

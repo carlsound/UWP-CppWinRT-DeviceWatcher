@@ -9,12 +9,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		AudioDeviceWatcher() = default; //delete;
 		//AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType);
         AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const dispatcher);
-		//~AudioDeviceWatcher();
-
-        void StartWatching();
-		//void StartWatching(Windows::UI::Core::CoreDispatcher const& dispatcher);
-
-        void StopWatching();
+		~AudioDeviceWatcher();
 
 		//CppUwpWinRtDeviceWatcherTest01::AudioDeviceType IoType();
 		//void IoType(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& value);
@@ -36,9 +31,14 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
     private:
 		void initializeWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType);
 
+		void StartWatching();
+		//void StartWatching(Windows::UI::Core::CoreDispatcher const& dispatcher);
+
+		void StopWatching();
+
 		Windows::Foundation::IAsyncOperation<Windows::Devices::Enumeration::DeviceInformationCollection> FindDevicesAsync();
 		
-    	/* Windows::Foundation::IAsyncAction */ void UpdateDevices();
+    	Windows::Foundation::IAsyncAction UpdateDevicesAsync();
 
 		Windows::Foundation::IAsyncAction DeviceWatcherAddedAsync(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformation result);
 		Windows::Foundation::IAsyncAction DeviceWatcherRemovedAsync(Windows::Devices::Enumeration::DeviceWatcher sender, Windows::Devices::Enumeration::DeviceInformationUpdate result);

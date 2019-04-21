@@ -20,8 +20,7 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	MainPageViewModel::~MainPageViewModel()
 	{
-		this->m_audioInputsDeviceWatcher.StopWatching();
-		m_audioInputsDeviceWatcher = nullptr;
+		//this->m_audioInputsDeviceWatcher.StopWatching();
 		m_audioInputsDeviceWatcher = nullptr;
 		m_coreDispatcher = nullptr;
 	}
