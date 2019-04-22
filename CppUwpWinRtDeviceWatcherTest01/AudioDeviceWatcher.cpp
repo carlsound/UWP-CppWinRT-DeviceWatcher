@@ -3,51 +3,14 @@
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-	/*
-	AudioDeviceWatcher::AudioDeviceWatcher():
-		m_deviceWatcher{ nullptr },
-		m_deviceType{ AudioDeviceType::Input },
-		m_coreDispatcher{ nullptr },
-		m_deviceInformationList{ std::make_shared<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>>(winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>()) },
-		m_deviceInformationCollection{ std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection>() }
-	{
-		initializeWatcher(m_deviceType);
-	}
-	*/
-
 	///////////////////////////////////////////////////////////////////////////////////////////
 
-	/*
-	AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType):
-		//m_deviceWatcher{ nullptr },
-		m_deviceType{ ioType } //,
-		//m_coreDispatcher{ nullptr },
-		//m_deviceInformationList{ std::make_shared<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>>(winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>()) },
-		//m_deviceInformationCollection{ std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection>() }
-	{
-		initializeWatcher(m_deviceType);
-	}
-	*/
-
-	///////////////////////////////////////////////////////////////////////////////////////////
-
-	
     AudioDeviceWatcher::AudioDeviceWatcher(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& ioType, Windows::UI::Core::CoreDispatcher const dispatcher): 
-		//m_deviceWatcher{ nullptr },
 		m_deviceType{ ioType }, 
-		m_coreDispatcher{dispatcher} //{std::make_shared<Windows::UI::Core::CoreDispatcher>(dispatcher) },
-		//m_deviceInformationList{ winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>() }, //{ std::make_shared<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>>( winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>() ) },
-		//m_deviceInformationCollection{nullptr}//{ std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection>() }
+		m_coreDispatcher{dispatcher}
     {
-		//auto device = Windows::Devices::Enumeration::DeviceInformation::CreateFromIdAsync(m_deviceSelectorString);
-		//m_deviceInformationList.Clear();
-		//m_deviceInformationList.Append(device.GetResults());
-
-		//this->UpdateDevices();
-
 		this->initializeWatcher(m_deviceType);
     }
-	
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,10 +24,6 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		m_deviceWatcher = nullptr;
 
 		m_deviceInformationCollection = nullptr;
-
-		//m_deviceWatcherAddedRevoker = nullptr;
-		//m_deviceWatcherRemovedRevoker = nullptr;
-		//m_deviceWatcherUpdatedRevoker = nullptr;
     }
 
 	///////////////////////////////////////////////////////////////////////////////////////////
@@ -127,28 +86,6 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 
-	/*
-	void AudioDeviceWatcher::StartWatching(Windows::UI::Core::CoreDispatcher const& dispatcher)
-	{
-		m_coreDispatcher = dispatcher;
-
-		/*
-		if ( (m_deviceType != AudioDeviceType::Input) || (m_deviceType != AudioDeviceType::Output) )
-		{
-			m_deviceType = AudioDeviceType::Input;
-		}
-		*/
-		/*
-		//initializeWatcher(m_deviceType);
-		initializeWatcher(this->IoType());
-
-		//m_deviceWatcher.Start();
-		this->Watcher(StartWatching());
-	}
-	*/
-
-	///////////////////////////////////////////////////////////////////////////////////////////
-
     void AudioDeviceWatcher::StopWatching()
     {
 		m_deviceWatcher.Stop();
@@ -156,66 +93,9 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
-	/*
-	CppUwpWinRtDeviceWatcherTest01::AudioDeviceType AudioDeviceWatcher::IoType()
-	{
-		throw hresult_not_implemented();
-	}
-
-	void AudioDeviceWatcher::IoType(CppUwpWinRtDeviceWatcherTest01::AudioDeviceType const& value)
-	{
-		throw hresult_not_implemented();
-	}
-	*/
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	hstring AudioDeviceWatcher::SelectorString()
-	{
-		throw hresult_not_implemented();
-	}
-
-	void AudioDeviceWatcher::SelectorString(hstring const& value)
-	{
-		throw hresult_not_implemented();
-	}
-	*/
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	Windows::Devices::Enumeration::DeviceWatcher AudioDeviceWatcher::Watcher()
-	{
-		throw hresult_not_implemented();
-	}
-
-	void AudioDeviceWatcher::Watcher(Windows::Devices::Enumeration::DeviceWatcher const& value)
-	{
-		throw hresult_not_implemented();
-	}
-	*/
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	Windows::Devices::Enumeration::DeviceInformationCollection AudioDeviceWatcher::Devices()
-	{
-		throw hresult_not_implemented();
-	}
-
-	void AudioDeviceWatcher::Devices(Windows::Devices::Enumeration::DeviceInformationCollection const& value)
-	{
-		throw hresult_not_implemented();
-	}
-	*/
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> AudioDeviceWatcher::DeviceInformationList()
     {
 		return m_deviceInformationList;
-        //throw hresult_not_implemented();
     }
 
 	////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,19 +139,15 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
-	/*
 	winrt::event_token AudioDeviceWatcher::CollectionChanged(Windows::UI::Xaml::Interop::NotifyCollectionChangedEventHandler const& handler)
 	{
-		throw hresult_not_implemented();
+		return m_collectionChanged.add(handler);
 	}
-	*/
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
-	/*
 	void AudioDeviceWatcher::CollectionChanged(winrt::event_token const& token) noexcept
 	{
-		throw hresult_not_implemented();
+		m_collectionChanged.remove(token);
 	}
-	*/
 }

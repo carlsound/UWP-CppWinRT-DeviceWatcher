@@ -6,13 +6,9 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 {
-	MainPage::MainPage() //: m_coreDispatcher{ nullptr }, m_viewModel{ nullptr }
+	MainPage::MainPage()
     {
         InitializeComponent();
-
-		//m_coreDispatcher = std::make_shared<Windows::UI::Core::CoreDispatcher>( Windows::UI::Core::CoreWindow::GetForCurrentThread().Dispatcher() );
-		//m_viewModel = std::make_shared<MainPageViewModel>( *m_coreDispatcher );
-		//m_viewModel = winrt::make<CppUwpWinRtDeviceWatcherTest01::implementation::MainPageViewModel>(*m_coreDispatcher );
     }
 
 	/*
@@ -30,19 +26,6 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		m_viewModel.OnNavigatedTo(e);
 	}
 
-	/*
-    int32_t MainPage::MyProperty()
-    {
-        throw hresult_not_implemented();
-    }
-
-    void MainPage::MyProperty(int32_t /* value */ //)
-    /*
-    {
-        throw hresult_not_implemented();
-    }
-	*/
-
     /*void MainPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
         myButton().Content(box_value(L"Clicked"));
@@ -54,10 +37,9 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		//throw hresult_not_implemented();
 	}
 
-	/*
-	void MainPage::ViewModel(CppUwpWinRtDeviceWatcherTest01::MainPageViewModel const& value)
+	Windows::UI::Xaml::Controls::ListBox MainPage::AudioInputsListBox()
 	{
-		throw hresult_not_implemented();
+		return this->audioInputDevicesDynamicListBox();
+		//throw hresult_not_implemented();
 	}
-	*/
 }
