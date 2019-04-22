@@ -14,7 +14,9 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical">
               <TextBlock Text="Select an audio input device:" TextWrapping="Wrap" TextAlignment="Center"/>
-                <ListBox x:Name="audioInputDevicesDynamicListBox" Height="200" Width="200" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Padding="5,5,5,5" ItemsSource="{x:Bind ViewModel.AudioInputs.DeviceInformationList, Mode=OneWay}" DisplayMemberPath="Name"/>
+                <ListBox x:Name="audioInputDevicesDynamicListBox" Height="200" Width="200" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Padding="5,5,5,5" />
+                <!--ItemsSource="{x:Bind ViewModel.AudioInputs.DeviceInformationList, Mode=OneWay}" DisplayMemberPath="Name"-->
+                        
             </StackPanel>
             <StackPanel Orientation="Vertical">
               <TextBlock Text="Select an audio output device:" TextWrapping="Wrap" TextAlignment="Center"/>

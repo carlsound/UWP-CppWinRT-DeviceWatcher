@@ -63,6 +63,8 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		hstring m_deviceSelectorString{ Windows::Media::Devices::MediaDevice::GetAudioCaptureSelector() };
 		//std::shared_ptr<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>> m_deviceInformationList{ std::make_shared<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>>(winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>()) };
 		Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation> m_deviceInformationList{ winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>() };
+		//
+		Windows::UI::Xaml::Data::Binding m_UiBinding;
     };
 }
 

@@ -1,7 +1,7 @@
 //import "oaidl.idl";
 //import "ocidl.idl";
 
-namespace CppUwpWinRtDeviceWatcherTest01
+namespace CppUwpWinRtDeviceWatcherTest01: Windows.UI.Xaml.Interop.INotifyCollectionChanged
 {
 	enum AudioDeviceType { Input, Output };
 

@@ -39,9 +39,9 @@ namespace winrt::CppUwpWinRtDeviceWatcherTest01::implementation
 		//m_deviceInformationList{ winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>() }, //{ std::make_shared<Windows::Foundation::Collections::IObservableVector<Windows::Devices::Enumeration::DeviceInformation>>( winrt::single_threaded_observable_vector<Windows::Devices::Enumeration::DeviceInformation>() ) },
 		//m_deviceInformationCollection{nullptr}//{ std::shared_ptr<Windows::Devices::Enumeration::DeviceInformationCollection>() }
     {
-		auto device = Windows::Devices::Enumeration::DeviceInformation::CreateFromIdAsync(m_deviceSelectorString);
+		//auto device = Windows::Devices::Enumeration::DeviceInformation::CreateFromIdAsync(m_deviceSelectorString);
 		//m_deviceInformationList.Clear();
-		m_deviceInformationList.Append(device.GetResults());
+		//m_deviceInformationList.Append(device.GetResults());
 
 		//this->UpdateDevices();
 

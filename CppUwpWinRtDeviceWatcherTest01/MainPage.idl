@@ -10,5 +10,6 @@ namespace CppUwpWinRtDeviceWatcherTest01
         
 		//Int32 MyProperty;
 		MainPageViewModel ViewModel{ get; };
+		Windows.UI.Xaml.Controls.ListBox AudioInputsListBox{ get; };
     }
 }
